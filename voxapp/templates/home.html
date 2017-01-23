@@ -1,0 +1,34 @@
+{% extends "template.html" %}
+
+{% block bootstrap3_title %}
+<title>AutomaVox</title>
+{% endblock %}
+
+{% block bootstrap3_content %}
+<div class="content-body">
+
+
+<!-- team -->
+
+
+
+<!-- scroll -->
+</div>
+<a href="#top" class="toTop scroll"><i class="fa fa-angle-up"></i></a>
+
+    <script src="/static/bootstrap/css/assets/scripts.js"></script>
+<!-- scroll -->
+
+    <script>
+      $( document ).ready(function() {
+        $("#top").height($(".header.fullpage").height());
+
+        $("#searchBtn").click(function(){
+            $("#formSearch").submit();
+        })
+
+      })
+    </script>
+
+
+{% endblock %}

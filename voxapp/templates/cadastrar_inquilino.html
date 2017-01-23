@@ -1,0 +1,196 @@
+{% extends "template_login.html" %}
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+    <title>Cadastro de Contas</title>
+{% endblock %}
+
+{% block bootstrap3_content %}
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/examples/signin/signin.css"> -->
+    <div class="row">
+        <div class="container col-xs-10 col-sm-7 centred">
+
+
+            <form method="POST" class="form-signin">
+            {% csrf_token %}
+                <h3 class="tituloDados">Cadastro de Inquilino</h3>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label class="control-label" for="id_tipo">Nome Completo</label>
+                            <input class="form-control" id="id_tipo" maxlength="20" name="nome_inquilino" placeholder="Nome Completo"
+                                   required="required" title="" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="container col-xs-6 form-group form-esquerda" >
+                            <label class="control-label" for="id_cpf">CPF</label>
+                            <input class="form-control" id="id_cpf" maxlength="20" name="cpf" placeholder="CPF"
+                                   required="required" title="" type="number">
+                        </div>
+
+                        <div class="container col-xs-4 form-group form-direita">
+                                <label class="control-label" for="id_rg">RG</label>
+                                <input class="form-control" id="id_rg" maxlength="20" name="rg" placeholder="RG"
+                                       required="required" title="" type="text">
+                        </div>
+                        <div class="container col-xs-2 form-group form-direita">
+                                <label class="control-label" for="id_uf">UF</label>
+                                <input class="form-control" id="id_uf" maxlength="20" name="cod_conta" placeholder="UF"
+                                       required="required" title="" type="text">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+
+                            <label class="control-label" for="id_nascimento">Nascimento</label>
+                            <div class="input-group date" >
+                                <input type='text' class="form-control" id="id_nascimento" name="nascimento" placeholder="Nascimento" title="" />
+                                <span class="input-group-addon input-calendarioform">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                            </div>
+
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="container col-sm-6 form-group form-esquerda">
+                            <label class="control-label" for="id_condominio">Condominio</label>
+                            <input class="form-control" id="id_condominio" name="valor" placeholder="Condominio"
+                                   required="required" title="" type="text"></div>
+                        <div class="container col-sm-6 form-group form-direita">
+                            <label class="control-label" for="id_apartamento">Apartamento</label>
+                            <input type='text' class="form-control" id="id_apartamento" name="apartamento" placeholder="Apartamento" title="" />
+                        </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="multifield"> <!-- form-group -->
+                            <label class="control-label" for="id_cep"></label>
+
+                        </div>
+                    </div>
+                </div>
+          <!--   {% csrf_token %}#}
+            {% bootstrap_form form %}
+            {{ form.as_p }} #}  -->
+                <div class="row">
+                    <div class="col-xs-12">
+                         <div class="col-xs-4">
+                            <input type="submit" value="Cancelar">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="submit" value="Cadastrar">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="submit" value="Continuar Cadastrando">
+                        </div>
+                    </div>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+
+        //$(document).off('#id_data_fim');
+
+        $('#id_data_inicio')
+            .datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e) {
+                // Revalidate the date field
+        
+                //$(document).on('.datepicker.data-api');
+            });
+
+
+          $("#id_data_fim").
+            datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e){
+                console.log( $("#id_data_inicio").val() )
+
+
+                var startdate = $("#id_data_inicio").val();
+                var endDate  = $("#id_data_fim").val();
+
+                if (new Date ( startdate ) > new Date ( endDate ) )  {
+                    alert("Data final tem que ser posterior a data inicial");
+                    $("#id_data_fim").val("")
+                }
+
+            });
+
+    });
+    </script>
+
+    
+  <!--  <script type="text/javascript">
+        $(document).load(function(){
+            $("#id_data_inicio").datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e){
+
+                // $("#id_data_fim").formValidation('revalidateField', 'date');
+
+            });
+
+        //    $("#id_data_fim").formValidation({
+        //     framework: 'bootstrap',
+        // icon: {
+        //     valid: 'glyphicon glyphicon-ok',
+        //     invalid: 'glyphicon glyphicon-remove',
+        //     validating: 'glyphicon glyphicon-refresh'
+        // },
+        //             fields: {
+        //                 date: {
+        //                     validators: {
+        //                         notEmpty: {
+        //                             message: 'The date is required'
+        //                         },
+        //                         date: {
+        //                             format: 'MM/DD/YYYY',
+        //                             min: '01/09/2016',
+        //                             max: '12/30/2017',
+        //                             message: 'The date is not a valid'
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         });
+
+                console.log(e.date)
+        // $('#id_data_inicio').datetimepicker();
+        // $('#id_data_fim').datetimepicker({
+        //     useCurrent: false //Important! See issue #1075
+        // });
+        // $("#id_data_inicio").on("dp.change", function (e) {
+        //     $('#id_data_fim').data("DateTimePicker").minDate(e.date); 
+        // $("#id_data_fim").on("dp.change", function (e) {
+        //     $('#id_data_inicio').data("DateTimePicker").maxDate(e.date);
+        // });
+    });
+
+</script> -->
+{% endblock %}

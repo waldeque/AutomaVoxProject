@@ -1,0 +1,134 @@
+{% load staticfiles %}
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html lang="pt-br" class="no-js">
+<title>AutomaVox</title>
+<meta name="author" content="Waldeque">
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<script src="/static/bootstrap/css/assets/bootstrap/js/bootstrap.js"></script>
+<script src="/static/bootstrap/css/assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="/static/bootstrap/css/assets/bootstrap/js/npm.js"></script>
+<link rel="stylesheet" href="/static/bootstrap/css/assets/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="/static/bootstrap/css/assets/fontawesome/css/font-awesome.css">
+<link rel="stylesheet" href="/static/bootstrap/css/assets/gridloading/css/component.css">
+<link rel="stylesheet" href="/static/bootstrap/css/assets/animate.css" >
+<link rel="stylesheet" href="/static/bootstrap/css/custom.css">
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/datepicker3.min.css" />
+
+
+<head>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+
+    {% block bootstrap3_title %}
+        <title>Título</title>
+    {% endblock %}
+</head>
+
+<body>
+{% bootstrap_messages %}
+
+
+
+
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid" >
+
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="col-xs-2">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" href="/homeu/" > <img alt="portfolio" src="/static/bootstrap/css/images/logo.png" width="120" class="logo-img" > </a>
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                            <!-- <form method="GET" action="/buscarevento" class="navbar-form navbar-left" role="search"> -->
+                            <form method="GET" action="/buscarevento" class="navbar-left" role="search" id="formSearch">
+                                <div class="form-group">
+                                <!--<div class="input-group">
+                                    <input type="text" class="form-control campoBusca" placeholder="Buscar Conta" name="search_box">
+                                    <div class="input-group-addon" id="searchBtn">
+                                        <img alt="portfolio" src="/static/bootstrap/css/images/icon_search.png" width="30" verticalalign="center">
+                                    </div>
+                                </div>
+                                     <a class="buscarbtn" href="/buscarevento/"></a> -->
+                                </div>
+                                <!--     <button type="submit" class="btn btn-default">Submit</button> -->
+                            </form>
+                </div>
+                <div class="col-xs-4">
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <div class="navbar-form navbar-right">
+                            <ul class="nav nav-tabs">
+                                 <li role="presentation" class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                          Cadastrar <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a role="button" href="/cadastrar_conta/"> Conta </a></li>
+                                            <li> <a role="button" href="/cadastrar_grupo/"> Grupo de Contas </a></li>
+                                            <li> <a role="button" href="/cadastrar_condominio/"> Condomínio</a></li>
+                                            <li> <a role="button" href="/cadastrar_inquilino/"> Inquilinos </a></li>
+
+                                        </ul>
+
+                                 </li>
+                                <li role="presentation" class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                          Relatórios <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a role="button" href="/relatorio/"> Atrasados </a></li>
+                                        </ul>
+
+                                </li>
+                                 <li role="presentation" class="dropdown">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                          Usuário <span class="caret"></span>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li> <a role="button" href="/login/"> Sair </a></li>
+                                        </ul>
+
+                                </li>
+
+                            </ul>
+                            <!-- <a href="/evento/"><button type="submit" class="btn btnCustom btn-default">Gerenciar Eventos</button></a>
+                          <a href="/cadastrar_conta/"><button type="submit" class="btn btnCustom btn-default">Cadastrar Conta</button></a>
+                            <a href="/cadastrar_grupo/"><button type="submit" class="btn btnCustom btn-default">Cadastrar Grupo </button></a>
+                            <a href="/cadastrar_condominio/"><button type="submit" class="btn btnCustom btn-default">Cadastrar Condominio</button></a>
+                            <a href="/cadastrar_inquilino/"><button type="submit" class="btn btnCustom btn-default">Cadastrar Inquilino</button></a>
+                            <a href="/logout/"><button type="submit" class="btn btnCustom btn-default">Sair</button></a>-->
+                        </div>
+                    </div>
+                </div>
+
+
+                
+            </div>
+                
+
+                           
+            
+
+
+           <!--  </div> -->
+        </div>
+
+
+        </div>
+</nav>
+
+{% block bootstrap3_content %}
+{% endblock %}
+</body>
+</html>

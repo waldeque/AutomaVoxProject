@@ -1,0 +1,218 @@
+{% extends "template_login.html" %}
+
+{% load bootstrap3 %}
+
+{% block bootstrap3_title %}
+    <title>Contas Vencidas</title>
+{% endblock %}
+
+
+
+
+{% block bootstrap3_content %}
+
+    <!-- <link rel="stylesheet" type="text/css" href="https://getbootstrap.com/examples/signin/signin.css"> -->
+    <div class="row">
+        <div class="container centred">
+
+
+            <form method="POST" class="form-signin">
+            {% csrf_token %}
+                <h3 class="tituloDados">Cadastro de Contas</h3>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="multifield"> <!-- form-group -->
+                            <label class="control-label" for="id_cep"></label>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                   <div class="col-xs-12">
+                        <table class="table" border="1">
+                            <tr>
+                                <b><td>Cód. Conta      </td></b>
+                                <td>Cód. Grupo      </td>
+                                <td>Vencimento      </td>
+                                <td>Condomínio      </td>
+                                <td>CPF Inquilino   </td>
+                                <td>Valor (R$)      </td>
+
+                            </tr>
+                            <tr>
+                                <td>02/2016</td>
+                                <td>010- Água</td>
+                                <td>20/01/2016</td>
+                                <td>Primavera</td>
+                                <td>049.888.342-00</td>
+                                <td>84,50</td>
+                            </tr>
+                            <tr>
+                                <td>14/2016</td>
+                                <td>013 - Internet</td>
+                                <td>12/02/2016</td>
+                                <td>Villa del Acqua</td>
+                                <td>033.333.333-33</td>
+                                <td>20,00</td>
+                            </tr>
+                            <tr>
+                                <td>17/2016</td>
+                                <td>008 - Telefone</td>
+                                <td>18/02/2016</td>
+                                <td>Villa del Acqua</td>
+                                <td>033.333.333-33</td>
+                                <td>104,59</td>
+                            </tr>
+                            <tr>
+                                <td>24/2016</td>
+                                <td>001 - Energia</td>
+                                <td>30/06/2016</td>
+                                <td>Villa del Acqua</td>
+                                <td>033.333.333-33</td>
+                                <td>32,25</td>
+                            </tr>
+                            <tr>
+                                <td>28/2016</td>
+                                <td>013 - Internet</td>
+                                <td>10/09/2016</td>
+                                <td>Primavera</td>
+                                <td>049.888.342-00</td>
+                                <td>95,90</td>
+                            </tr>
+                            <tr>
+                                <td>29/2016</td>
+                                <td>010 - Agua</td>
+                                <td>12/10/2016</td>
+                                <td>Villa del Acqua</td>
+                                <td>033.333.333-33</td>
+                                <td>20,00</td>
+                            </tr>
+                            <tr>
+                                <td>44/2016</td>
+                                <td>001 - Energia </td>
+                                <td>30/12/2016</td>
+                                <td>Primavera</td>
+                                <td>049.888.342-00</td>
+                                <td>207,49</td>
+                            </tr><tr>
+                                <td>TOTAL</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>594,75</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="col-xs-4">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="submit" value="Imprimir">
+                        </div>
+                        <div class="col-xs-4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="multifield"> <!-- form-group -->
+                            <label class="control-label" for="id_cep"></label>
+
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+<script>
+    $(document).ready(function() {
+
+        //$(document).off('#id_data_fim');
+
+        $('#id_data_inicio')
+            .datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e) {
+                // Revalidate the date field
+
+                //$(document).on('.datepicker.data-api');
+            });
+
+
+          $("#id_data_fim").
+            datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e){
+                console.log( $("#id_data_inicio").val() )
+
+
+                var startdate = $("#id_data_inicio").val();
+                var endDate  = $("#id_data_fim").val();
+
+                if (new Date ( startdate ) > new Date ( endDate ) )  {
+                    alert("Data final tem que ser posterior a data inicial");
+                    $("#id_data_fim").val("")
+                }
+
+            });
+
+    });
+    </script>
+
+
+  <!--  <script type="text/javascript">
+        $(document).load(function(){
+            $("#id_data_inicio").datepicker({
+                format: 'dd/mm/yyyy'
+            })
+            .on('changeDate', function(e){
+
+                // $("#id_data_fim").formValidation('revalidateField', 'date');
+
+            });
+
+        //    $("#id_data_fim").formValidation({
+        //     framework: 'bootstrap',
+        // icon: {
+        //     valid: 'glyphicon glyphicon-ok',
+        //     invalid: 'glyphicon glyphicon-remove',
+        //     validating: 'glyphicon glyphicon-refresh'
+        // },
+        //             fields: {
+        //                 date: {
+        //                     validators: {
+        //                         notEmpty: {
+        //                             message: 'The date is required'
+        //                         },
+        //                         date: {
+        //                             format: 'MM/DD/YYYY',
+        //                             min: '01/09/2016',
+        //                             max: '12/30/2017',
+        //                             message: 'The date is not a valid'
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         });
+
+                console.log(e.date)
+        // $('#id_data_inicio').datetimepicker();
+        // $('#id_data_fim').datetimepicker({
+        //     useCurrent: false //Important! See issue #1075
+        // });
+        // $("#id_data_inicio").on("dp.change", function (e) {
+        //     $('#id_data_fim').data("DateTimePicker").minDate(e.date);
+        // $("#id_data_fim").on("dp.change", function (e) {
+        //     $('#id_data_inicio').data("DateTimePicker").maxDate(e.date);
+        // });
+    });
+
+</script> -->
+{% endblock %}
